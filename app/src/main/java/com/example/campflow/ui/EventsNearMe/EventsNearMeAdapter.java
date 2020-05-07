@@ -1,6 +1,7 @@
 package com.example.campflow.ui.EventsNearMe;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +18,15 @@ import java.util.ArrayList;
 
 public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapter.EventViewHolder>{
 
-    Context context;
+    private Context context;
     private ArrayList<EventsNearMeClass> mEvents;
 
-    public EventsNearMeAdapter(Context context) {
+    public EventsNearMeAdapter(Context context){
         this.context=context;
     }
 
-    public EventsNearMeAdapter(ArrayList<EventsNearMeClass> Events) {
+    public EventsNearMeAdapter(Context context,ArrayList<EventsNearMeClass> Events) {
+        this.context=context;
         this.mEvents=Events;
     }
 
@@ -35,12 +37,14 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.card_events_near_me, parent, false);
+
         final TextView EventHead=(TextView)view.findViewById(R.id.event_head);
         final TextView EventLocation=(TextView)view.findViewById(R.id.event_location);
         final TextView EventDescription=(TextView)view.findViewById(R.id.event_description);
         final ImageView EventImage=(ImageView)view.findViewById(R.id.event_image);
         final TextView EventWeb=(TextView)view.findViewById(R.id.event_web);
         final TextView EventInterested=(TextView)view.findViewById(R.id.event_interested);
+
         return (new EventViewHolder(view));
     }
 
@@ -49,16 +53,18 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
         if (mEvents != null) {
 
             EventsNearMeClass currentEvent = mEvents.get(position);
-            holder.event_id.setText(currentEvent.getEvent_id());
-            holder.event_head.setText(currentEvent.getEvent_head());
-            holder.event_location.setText(currentEvent.getEvent_location());
-            holder.event_description.setText(currentEvent.getEvent_description());
-            Glide.with(context)
-                    .load(currentEvent.getEvent_image())
-                    .thumbnail(Glide.with(context).load(R.drawable.ic_launcher_foreground))
-                    .into(holder.event_image);
-            holder.event_web.setText(currentEvent.getEvent_web());
-            holder.event_interested.setText(currentEvent.getEvent_interested());
+            if (holder!=null) {
+                holder.event_id.setText(currentEvent.getEvent_id());
+                holder.event_head.setText(currentEvent.getEvent_head());
+                holder.event_location.setText(currentEvent.getEvent_location());
+                holder.event_description.setText(currentEvent.getEvent_description());
+                Glide.with(context)
+                        .load(currentEvent.getEvent_image())
+                        .thumbnail(Glide.with(context).load(R.drawable.ic_launcher_foreground))
+                        .into(holder.event_image);
+                holder.event_web.setText(currentEvent.getEvent_web());
+                holder.event_interested.setText(currentEvent.getEvent_interested());
+            }
         }
     }
 
@@ -70,8 +76,8 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
             return  0;
     }
 
-    public class EventViewHolder extends RecyclerView.ViewHolder
-    {
+    public class EventViewHolder extends RecyclerView.ViewHolder {
+
         public TextView event_id;
         public TextView event_head;
         public TextView event_location;
@@ -82,6 +88,7 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
+            event_id=(TextView)itemView.findViewById(R.id.event_id);
             event_head=(TextView)itemView.findViewById(R.id.event_head);
             event_location=(TextView)itemView.findViewById(R.id.event_location);
             event_description=(TextView)itemView.findViewById(R.id.event_description);
