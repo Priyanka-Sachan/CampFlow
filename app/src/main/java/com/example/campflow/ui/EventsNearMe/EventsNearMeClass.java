@@ -23,6 +23,7 @@ public class EventsNearMeClass {
     }
 
     public String getEvent_id() {
+
         return event_id;
     }
 
@@ -35,30 +36,37 @@ public class EventsNearMeClass {
     }
 
     public String getEvent_description() {
+
         return event_description;
     }
 
     public String getEvent_image() {
+
         return event_image;
     }
 
     public String getEvent_web() {
+
         return event_web;
     }
 
     public String getEvent_interested() {
+
         return event_interested;
     }
 
     public void setEvent_id(String event_id) {
+
         this.event_id = event_id;
     }
 
     public void setEvent_head(String event_head) {
+
         this.event_head = event_head;
     }
 
     public void setEvent_location(String event_location) {
+
         this.event_location = event_location;
     }
 
@@ -67,10 +75,12 @@ public class EventsNearMeClass {
     }
 
     public void setEvent_image(String event_image) {
+
         this.event_image = event_image;
     }
 
     public void setEvent_web(String event_web) {
+
         this.event_web = event_web;
     }
 

@@ -51,9 +51,7 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         if (mEvents != null) {
-
             EventsNearMeClass currentEvent = mEvents.get(position);
-            if (holder!=null) {
                 holder.event_id.setText(currentEvent.getEvent_id());
                 holder.event_head.setText(currentEvent.getEvent_head());
                 holder.event_location.setText(currentEvent.getEvent_location());
@@ -64,7 +62,6 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
                         .into(holder.event_image);
                 holder.event_web.setText(currentEvent.getEvent_web());
                 holder.event_interested.setText(currentEvent.getEvent_interested());
-            }
         }
     }
 

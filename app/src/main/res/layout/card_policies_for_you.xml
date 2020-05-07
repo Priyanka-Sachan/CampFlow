@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="#ffffff"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/policy_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Policy ID"/>
+        <TextView
+            android:id="@+id/policy_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Policy Head"/>
+
+        <TextView
+            android:id="@+id/policy_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Policy Description"/>
+
+        <ImageView
+            android:id="@+id/policy_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Policy Image"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--policy_web  would be converted to buttons and
+            SHARE will have multiple options-->
+
+            <TextView
+                android:id="@+id/policy_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Policy Website"/>
+
+            <Button
+                android:text="SHARE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
