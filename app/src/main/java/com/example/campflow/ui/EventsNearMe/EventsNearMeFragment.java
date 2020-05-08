@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campflow.JsonInterface;
 import com.example.campflow.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,17 @@ public class EventsNearMeFragment extends Fragment {
         eventsNearMeAdapter=new EventsNearMeAdapter(getContext());
         jsonInterface= retrofit.create(JsonInterface.class);
         getAllEvents();
-        return root;
+        FloatingActionButton editEvent=root.findViewById(R.id.edit_event);
+        editEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                EditorEventsNearMeFragment editorEventsNearMeFragment = new EditorEventsNearMeFragment();
+                fragmentTransaction.replace(R.id.nav_host_fragment, editorEventsNearMeFragment);
+                fragmentTransaction.commit();
+            }
+        });        return root;
     }
 
     public void UpdateUI(ArrayList<EventsNearMeClass> Events) {
