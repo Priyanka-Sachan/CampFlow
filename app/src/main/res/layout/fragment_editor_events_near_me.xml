@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Event ID:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--Later,event_id would be a predefined key-->
+    <EditText
+        android:id="@+id/edit_event_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Head:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edit_event_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Location:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--Later,edit_event_location could be a spinner-->
+    <EditText
+        android:id="@+id/edit_event_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Description:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edit_event_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Image URL:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--Later,image would be picked from device storage-->
+    <EditText
+        android:id="@+id/edit_event_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Website:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edit_event_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Event Interested:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--Later,event_interested would be by default 1 and there will be no EditText-->
+    <EditText
+        android:id="@+id/edit_event_interested"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/save_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+
+</LinearLayout>
