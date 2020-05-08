@@ -58,6 +58,7 @@ public class EventsNearMeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 EditorEventsNearMeFragment editorEventsNearMeFragment = new EditorEventsNearMeFragment();
                 fragmentTransaction.replace(R.id.nav_host_fragment, editorEventsNearMeFragment);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });        return root;

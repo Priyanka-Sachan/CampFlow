@@ -101,6 +101,7 @@ public class EditorEventsNearMeFragment extends Fragment {
 
             }
         });
+
     }
     public void BackToHome() {
         FragmentManager fragmentManager = getFragmentManager();
