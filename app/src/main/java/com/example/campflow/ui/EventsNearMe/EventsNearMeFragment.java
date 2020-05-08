@@ -56,9 +56,7 @@ public class EventsNearMeFragment extends Fragment {
             eventsNearMeAdapter = new EventsNearMeAdapter(getContext(),Events);
         recyclerView.setAdapter(eventsNearMeAdapter);
     }
-    public void getAllEvents(){
-        //Log.e("getAllEvents","Reached here.");
-
+        public void getAllEvents(){
         Call<ArrayList<EventsNearMeClass>> call =jsonInterface.getEvents();
         call.enqueue(new Callback<ArrayList<EventsNearMeClass>>() {
 
