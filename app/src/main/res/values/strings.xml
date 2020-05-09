@@ -9,6 +9,7 @@
     <string name="menu_join_us">Join Us</string>
     <string name="menu_policies_for_you">Policies for you</string>
     <string name="menu_posts">Posts</string>
+    <string name="menu_login">Login</string>
     <string name="menu_contact_us">Contact Us</string>
     <string name="menu_events_near_me">Events near me</string>
 </resources>

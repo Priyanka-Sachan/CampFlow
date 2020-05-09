@@ -40,4 +40,11 @@
         android:name="com.example.campflow.ui.EventsNearMe.EventsNearMeFragment"
         android:label="@string/menu_events_near_me"
         tools:layout="@layout/fragment_events_near_me" />
+
+    <activity
+        android:id="@+id/nav_login"
+        android:name="com.example.campflow.login.LoginActivity"
+        android:label="Login"
+        tools:layout="@layout/activity_login"/>
+
 </navigation>
