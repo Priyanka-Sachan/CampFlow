@@ -8,28 +8,24 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.campflow.R;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class ContactUsFragment extends Fragment {
 
-    private ContactUsViewModel shareViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ContactUsViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_contact_us, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        AppCompatActivity appCompatActivity=(AppCompatActivity)getActivity();
+        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) appCompatActivity.findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Contact Us");
+        collapsingToolbarLayout.setBackgroundResource(R.drawable.contact_us_appbar);
         return root;
     }
 }
