@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -16,6 +17,7 @@ import com.glide.slider.library.animations.DescriptionAnimation;
 import com.glide.slider.library.slidertypes.BaseSliderView;
 import com.glide.slider.library.slidertypes.TextSliderView;
 import com.glide.slider.library.tricks.ViewPagerEx;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,10 @@ public class HomeFragment extends Fragment implements BaseSliderView.OnSliderCli
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        AppCompatActivity appCompatActivity=(AppCompatActivity)getActivity();
+        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) appCompatActivity.findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Home");
+        collapsingToolbarLayout.setBackgroundResource(R.drawable.home_appbar);
         mDemoSlider = root.findViewById(R.id.slider);
 
         ArrayList<String> listUrl = new ArrayList<>();

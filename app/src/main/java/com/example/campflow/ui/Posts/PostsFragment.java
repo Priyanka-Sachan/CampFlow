@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campflow.JsonInterface;
 import com.example.campflow.R;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,10 @@ public class PostsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_posts, container, false);
+        AppCompatActivity appCompatActivity=(AppCompatActivity)getActivity();
+        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) appCompatActivity.findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Posts");
+        collapsingToolbarLayout.setBackgroundResource(R.drawable.posts_appbar);
         recyclerView=root.findViewById(R.id.recycler_root_posts);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         Retrofit retrofit=new Retrofit.Builder()

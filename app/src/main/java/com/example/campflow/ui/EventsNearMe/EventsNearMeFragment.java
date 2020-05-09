@@ -1,13 +1,13 @@
 package com.example.campflow.ui.EventsNearMe;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campflow.JsonInterface;
 import com.example.campflow.R;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -36,6 +37,11 @@ public class EventsNearMeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_events_near_me, container, false);
+        AppCompatActivity appCompatActivity=(AppCompatActivity)getActivity();
+        CollapsingToolbarLayout collapsingToolbarLayout=(CollapsingToolbarLayout) appCompatActivity.findViewById(R.id.toolbar_layout);
+        collapsingToolbarLayout.setTitle("Events Near Me");
+        collapsingToolbarLayout.setBackgroundResource(R.drawable.events_near_me_appbar);
+        //collapsingToolbarLayout.setTitleEnabled(false);
         recyclerView=root.findViewById(R.id.recycler_root_events_near_me);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         Retrofit retrofit=new Retrofit.Builder()
