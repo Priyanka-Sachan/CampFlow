@@ -30,7 +30,7 @@ public class LogCoverFragment extends Fragment {
                 SignInFragment signinfragment=new SignInFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.login_host_fragment, signinfragment);
+                fragmentTransaction.replace(R.id.nav_host_fragment, signinfragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }});
@@ -41,7 +41,7 @@ public class LogCoverFragment extends Fragment {
                 SignUpFragment signupfragment=new SignUpFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.login_host_fragment, signupfragment);
+                fragmentTransaction.replace(R.id.nav_host_fragment, signupfragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }});
@@ -52,7 +52,7 @@ public class LogCoverFragment extends Fragment {
                 RegisterFragment registerfragment=new RegisterFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.login_host_fragment, registerfragment);
+                fragmentTransaction.replace(R.id.nav_host_fragment, registerfragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }});
