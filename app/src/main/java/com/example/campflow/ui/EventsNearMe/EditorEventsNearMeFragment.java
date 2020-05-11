@@ -1,6 +1,7 @@
 package com.example.campflow.ui.EventsNearMe;
 
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,12 @@ import com.example.campflow.JsonInterface;
 import com.example.campflow.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +39,7 @@ public class EditorEventsNearMeFragment extends Fragment {
     private JsonInterface jsonInterface;
 
     //Later,key would be made more private
-    String key;
+    String key="$2b$10$SyqurjWi0MDaL0ag302at.kUAcYH5zWnZPz51p2QVFGUAkViZpbxm";
 
     private EditText EventId;
     private EditText EventHead;
@@ -66,7 +73,7 @@ public class EditorEventsNearMeFragment extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                event=new EventsNearMeClass(EventId.getText().toString(),EventHead.getText().toString(),
+               event=new EventsNearMeClass(EventId.getText().toString(),EventHead.getText().toString(),
                  EventLocation.getText().toString(),EventDescription.getText().toString(),EventImage.getText().toString()
                   ,EventWeb.getText().toString(),EventInterested.getText().toString());
                 createEvent(event);
@@ -75,28 +82,40 @@ public class EditorEventsNearMeFragment extends Fragment {
         return root;
     }
     public void createEvent(EventsNearMeClass eventsNearMeClass) {
-        //Log.e("creteEvent","Reached here.");
-        Call<EventsNearMeClass> call = jsonInterface.createEvent(key,eventsNearMeClass);
-        //Log.e("creteEvent","After Call.");
 
-        call.enqueue(new Callback<EventsNearMeClass>() {
+        //Using fake Rest API,hence data sent in JSON format.
+        Map<String,Object> jsonParams = new ArrayMap<>();
+        jsonParams.put("event_id", eventsNearMeClass.getEvent_id());
+        jsonParams.put("event_head",eventsNearMeClass.getEvent_head());
+        jsonParams.put("event_location",eventsNearMeClass.getEvent_location());
+        jsonParams.put("event_description",eventsNearMeClass.getEvent_description());
+        jsonParams.put("event_image",eventsNearMeClass.getEvent_image());
+        jsonParams.put("event_web",eventsNearMeClass.getEvent_web());
+        jsonParams.put("event_interested",eventsNearMeClass.getEvent_interested());
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        Log.e("Json Created",new JSONObject(jsonParams).toString());
+
+        Call<ResponseBody> response = jsonInterface.createEvent(key, body);
+        response.enqueue(new Callback<ResponseBody>() {
 
             @Override
-            public void onResponse(Call<EventsNearMeClass> call, Response<EventsNearMeClass> response) {
-                if(!(response.isSuccessful())){
-                    Toast.makeText(getContext(),"Sorry!!!Content Not Available.",Toast.LENGTH_SHORT).show();
-                    //Log.e("OnResponse :","Not Successful...."+response.body());
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> rawResponse) {
+                try
+                {
+                    BackToHome();
+                    Log.e("OnResponse", "RetroFit2.0 :RetroGetLogin: " + rawResponse.body().string());
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
                     BackToHome();
                 }
-                //Log.e("createEvent","Before intent");
-                BackToHome();
-                //Log.e("createEvent","After intent");
             }
             @Override
-            public void onFailure(Call<EventsNearMeClass> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
-                //t.printStackTrace();
-                //Log.e("OnFailure :",t.getMessage());
+                t.printStackTrace();
+                Log.e("OnFailure :",t.getMessage());
 
             }
         });
