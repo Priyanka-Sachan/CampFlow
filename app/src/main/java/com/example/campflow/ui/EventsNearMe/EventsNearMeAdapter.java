@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,11 +72,11 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
 
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT,EventHead.getText()+
-                        "\n\nLocation:"+EventLocation.getText()+"\n\n"
-                        +EventDescription.getText()
-                        +"\n\n"+EventInterested.getText()+" are interested!!!Are U??"
-                        +"\n\nFor more information,visit us at: "+EventWeb.getText());
+                intent.putExtra(Intent.EXTRA_TEXT,EventHead.getText()
+                        +"\n"+EventLocation.getText()
+                        +"\n\n" +EventDescription.getText()
+                        +"\n\n"+EventInterested.getText()+"Are you?"
+                        +"\nFor more information,visit us at:\n"+EventWeb.getText());
                 intent.setType("text/plain");
                 context.startActivity(intent);
             }
@@ -92,14 +91,14 @@ public class EventsNearMeAdapter  extends RecyclerView.Adapter<EventsNearMeAdapt
             EventsNearMeClass currentEvent = mEvents.get(position);
                 holder.event_id.setText("#"+currentEvent.getEvent_id());
                 holder.event_head.setText(currentEvent.getEvent_head());
-                holder.event_location.setText(currentEvent.getEvent_location());
+                holder.event_location.setText("\nLocation:"+currentEvent.getEvent_location());
                 holder.event_description.setText(currentEvent.getEvent_description());
                 Glide.with(context)
                         .load(currentEvent.getEvent_image())
                         .thumbnail(Glide.with(context).load(R.drawable.ic_launcher_foreground))
                         .into(holder.event_image);
-                holder.event_web.setText("Visit us at: "+currentEvent.getEvent_web());
-                holder.event_interested.setText(currentEvent.getEvent_interested()+" are interested!!!");
+                holder.event_web.setText(currentEvent.getEvent_web());
+                holder.event_interested.setText(currentEvent.getEvent_interested()+" people are interested!!!");
         }
     }
 

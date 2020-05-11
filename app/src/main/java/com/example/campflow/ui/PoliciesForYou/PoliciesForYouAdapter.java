@@ -1,9 +1,12 @@
 package com.example.campflow.ui.PoliciesForYou;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,14 +36,45 @@ public class PoliciesForYouAdapter  extends RecyclerView.Adapter<PoliciesForYouA
     @Override
     public PolicyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //this controls how the current view will work in background.
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.card_policies_for_you, parent, false);
 
         final TextView PolicyHead=(TextView)view.findViewById(R.id.policy_head);
         final TextView PolicyDescription=(TextView)view.findViewById(R.id.policy_description);
         final ImageView PolicyImage=(ImageView)view.findViewById(R.id.policy_image);
         final TextView PolicyWeb=(TextView)view.findViewById(R.id.policy_web);
+        ImageButton PolicyShare=(ImageButton) view.findViewById(R.id.policy_share);
+
+        PolicyShare.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT,PolicyHead.getText()
+                        +"\n\n" +PolicyDescription.getText()
+                        +"\nFor more information,visit us at:\n"+PolicyWeb.getText());
+                intent.setType("text/plain");
+                context.startActivity(intent);
+            }
+        });
+
+        PolicyWeb.setOnClickListener(
+                new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        String url=(String) PolicyWeb.getText();
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(url));
+                        context.startActivity(intent);
+                    }
+                }
+        );
 
         return (new PolicyViewHolder(view));
     }
@@ -50,7 +84,7 @@ public class PoliciesForYouAdapter  extends RecyclerView.Adapter<PoliciesForYouA
         if (mPolicies != null) {
          //   PoliciesForYouClass currentPolicy = mPolicies.get(position);
             PoliciesForYouClass currentPolicy= mPolicies.get(position);
-                holder.policy_id.setText(currentPolicy.getPolicy_id());
+                holder.policy_id.setText("#"+currentPolicy.getPolicy_id());
                 holder.policy_head.setText(currentPolicy.getPolicy_head());
                 holder.policy_description.setText(currentPolicy.getPolicy_description());
                 Glide.with(context)

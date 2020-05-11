@@ -6,25 +6,51 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardBackgroundColor="#ffffff"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
     app:strokeColor="#ffffff"
     app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <TextView
-            android:id="@+id/policy_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Policy ID"/>
-        <TextView
-            android:id="@+id/policy_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Policy Head"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/policy_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                tools:src="@drawable/home_appbar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignStart="@id/policy_image"
+                android:layout_alignBottom="@id/policy_image">
+
+                <TextView
+                    android:id="@+id/policy_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Policy ID" />
+
+                <TextView
+                    android:id="@+id/policy_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Policy Head"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/policy_description"
@@ -32,30 +58,48 @@
             android:layout_height="wrap_content"
             tools:text="Policy Description"/>
 
-        <ImageView
-            android:id="@+id/policy_image"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Policy Image"/>
+            android:text="For more information,visit us at:"/>
+
+        <TextView
+            android:id="@+id/policy_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Policy web"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#E0E0E0">
 
-            <!--policy_web  would be converted to buttons and
-            SHARE will have multiple options-->
-
-            <TextView
-                android:id="@+id/policy_web"
+            <!--event_web and event_interested would be converted to buttons and
+             SHARE will have multiple options-->
+            <ImageButton
+                android:id="@+id/policy_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Policy Website"/>
-
-            <Button
-                android:text="SHARE"
+                android:src="@drawable/ic_like_off"/>
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="I LIKE IT!"/>
+
+            <ImageButton
+                android:id="@+id/policy_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark"/>
+
+            <ImageButton
+                android:id="@+id/policy_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share" />
 
         </LinearLayout>
 

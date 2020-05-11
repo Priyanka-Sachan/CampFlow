@@ -71,6 +71,11 @@
             tools:text="Event Description"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="For more information,visit us at:"/>
+
+        <TextView
             android:id="@+id/event_web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
