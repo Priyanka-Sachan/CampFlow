@@ -6,25 +6,57 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardBackgroundColor="#ffffff"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
     app:strokeColor="#ffffff"
     app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <TextView
-            android:id="@+id/event_id"
+            android:id="@+id/event_interested"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Event ID"/>
-        <TextView
-            android:id="@+id/event_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Event Head"/>
+            tools:text="Event Interested"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                tools:src="@drawable/home_appbar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignStart="@id/event_image"
+                android:layout_alignBottom="@id/event_image">
+
+                <TextView
+                    android:id="@+id/event_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Event ID" />
+
+                <TextView
+                    android:id="@+id/event_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Event Head"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/event_location"
@@ -38,36 +70,43 @@
             android:layout_height="wrap_content"
             tools:text="Event Description"/>
 
-        <ImageView
-            android:id="@+id/event_image"
+        <TextView
+            android:id="@+id/event_web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Event Image"/>
+            tools:text="Event web"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#E0E0E0">
 
             <!--event_web and event_interested would be converted to buttons and
              SHARE will have multiple options-->
-
-            <TextView
-                android:id="@+id/event_web"
+            <ImageButton
+                android:id="@+id/event_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Event Website"/>
-
+                android:src="@drawable/ic_fav_off"/>
             <TextView
-                android:id="@+id/event_interested"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Event Interested"/>
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="I'M INTERESTED!"/>
 
-            <Button
-                android:text="SHARE"
+            <ImageButton
+                android:id="@+id/event_bookmark"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark"/>
+
+            <ImageButton
+                android:id="@+id/event_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share" />
 
         </LinearLayout>
 
